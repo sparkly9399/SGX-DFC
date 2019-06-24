@@ -1,0 +1,17 @@
+/* Enclave.edl - Top EDL file. */
+
+enclave {
+	include "time.h"
+
+	from "sgx_tstdc.edl" import *;
+	
+    trusted {
+		public void ecall_start_dfc(void);
+	};
+
+    untrusted {
+		void ocall_print_string([in, string] const char *str);
+		void ocall_sgx_exit(int e);
+	};
+
+};
